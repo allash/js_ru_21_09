@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import CommentList from './CommentList'
 
 class Article extends Component {
+    
     static defaultProps = {
 
     }
@@ -29,6 +31,9 @@ class Article extends Component {
                 </h2>
                 {body}
                 <h3>creation date: {(new Date(article.date)).toDateString()}</h3>
+                <div>
+                    <CommentList comments={article.comments}/>
+                </div>
             </div>
         )
     }
