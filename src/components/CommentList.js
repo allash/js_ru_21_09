@@ -34,7 +34,7 @@ class CommentList extends Component {
 
         return (
             <div className='comments-section' style={commentsSectionStyle}>
-                 <button onClick={this.toggleComment}>{this.state.isOpen ? 'close' : 'open'}</button>
+                 <span>Comments </span><button onClick={this.toggleComment}>{this.state.isOpen ? 'close' : 'open'}</button>
                 {this.state.isOpen && commentsSection}
             </div>
         )
