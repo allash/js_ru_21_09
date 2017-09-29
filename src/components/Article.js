@@ -2,6 +2,7 @@ import React, {Component, PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 
+
 class Article extends PureComponent {
     static defaultProps = {
 
@@ -46,7 +47,6 @@ class Article extends PureComponent {
 
     setHeaderRef = header => {
         this.header = header
-        console.log('---', this.header)
     }
 
     increment = () => this.setState({

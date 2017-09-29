@@ -1,19 +1,17 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Article from './Article'
+import accordionDecorator from '../decorators/accordionDecorator'
 
 class ArticleList extends Component {
-    state = {
-        openArticleId: null
-    }
 
     render() {
-        const {articles} = this.props
+        const {articles, openArticleId, toggleArticle} = this.props
         if (!articles.length) return <h3>No Articles</h3>
         const articleElements = articles.map((article) => <li key={article.id}>
             <Article article={article}
-                     isOpen={article.id === this.state.openArticleId}
-                     onButtonClick={this.toggleArticle(article.id)}
+                     isOpen={article.id === openArticleId}
+                     onButtonClick={toggleArticle(article.id)}
             />
         </li>)
         return (
@@ -21,22 +19,7 @@ class ArticleList extends Component {
                 {articleElements}
             </ul>
         )
-    }
-
-    toggleArticle = (openArticleId) => {
-        if (this.memoized.get(openArticleId)) return this.memoized.get(openArticleId)
-        const func = (ev) => {
-            this.setState({
-                openArticleId: this.state.openArticleId === openArticleId ? null : openArticleId
-            })
-        }
-
-        this.memoized.set(openArticleId, func)
-
-        return func
-    }
-
-    memoized = new Map()
+    } 
 }
 
 
@@ -48,4 +31,4 @@ ArticleList.propTypes = {
     articles: PropTypes.array.isRequired
 }
 
-export default ArticleList
+export default accordionDecorator(ArticleList)
