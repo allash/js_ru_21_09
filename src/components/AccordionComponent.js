@@ -6,25 +6,25 @@ class AccordionComponent extends Component {
     memoized = new Map()
     
     state = {
-        openArticleId: null
+        openItemId: null
     }
 
-    toggleArticle = (openArticleId) => {
-        if (this.memoized.get(openArticleId)) return this.memoized.get(openArticleId)
+    toggleArticle = (openItemId) => {
+        if (this.memoized.get(openItemId)) return this.memoized.get(openItemId)
         const func = (ev) => {
             this.setState({
-                openArticleId: this.state.openArticleId === openArticleId ? null : openArticleId
+                openItemId: this.state.openItemId === openItemId ? null : openItemId
             })
         }
 
-        this.memoized.set(openArticleId, func)
+        this.memoized.set(openItemId, func)
 
         return func
     }
 
     render() {
         return (
-            <ArticleList {...this.props} openArticleId = {this.state.openArticleId} toggleArticle = {this.toggleArticle} />
+            <ArticleList {...this.props} openItemId = {this.state.openItemId} toggleArticle = {this.toggleArticle} />
         )
     }
 }
