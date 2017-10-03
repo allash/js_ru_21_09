@@ -64,7 +64,7 @@ class Article extends PureComponent {
     getBody() {
         const {isOpen, article} = this.props
         const {username, text, usernameValidationMessage, textValidationMessage, 
-            usernameValidationStyle, textValidationStyle, isUsernameValid, isTextValid} = this.state
+            usernameValidationStyle, textValidationStyle} = this.state
 
         if (!isOpen) return null
 
