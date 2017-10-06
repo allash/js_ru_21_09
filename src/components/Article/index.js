@@ -69,17 +69,10 @@ class Article extends PureComponent {
 
     setHeaderRef = header => {
         this.header = header
-//        console.log('---', this.header)
     }
 
     setCommentsRef = comments => {
         this.comments = comments
-/*
-        setTimeout(() => {
-            this.comments.forceUpdate()
-        }, 500)
-*/
-//        console.log('---', 'comments', comments, findDOMNode(comments))
     }
 
     increment = () => this.setState({
@@ -87,7 +80,6 @@ class Article extends PureComponent {
     })
 
     handleDelete = () => {
-        console.log('---', 'deleting')
         this.props.deleteArticle(this.props.article.id)
     }
 }
