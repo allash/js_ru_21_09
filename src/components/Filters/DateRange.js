@@ -8,20 +8,21 @@ class DateRange extends Component {
    
     handleDayClick = (day) => {
         let dateRange = DateUtils.addDayToRange(day, this.props.filter.dateRange)
-        let { selected } = this.props.filter
-        const filter = {dateRange, selected}
-        this.props.setFilter(filter)
-        this.props.filterArticles(filter)
+        this.setFiltersAndUpdateArticles(dateRange)
     }
 
     onResetClick = () => {
-        let { selected } = this.props.filter
         let dateRange = {
             from: null,
             to: null
         }
-        const filter = {dateRange, selected}
 
+        this.setFiltersAndUpdateArticles(dateRange)
+    }
+
+    setFiltersAndUpdateArticles = (dateRange) => {
+        let { selected } = this.props.filter
+        const filter = {dateRange, selected}
         this.props.setFilter(filter)
         this.props.filterArticles(filter)
     }
