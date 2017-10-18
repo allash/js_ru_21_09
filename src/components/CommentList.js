@@ -30,7 +30,7 @@ class CommentList extends Component {
 }
 
 function getBody(props) {
-    const {comments, isOpen} = props
+    const {comments, isOpen, articleId} = props
     if (!isOpen) return null
 
     const body = comments.length ? (
@@ -38,11 +38,12 @@ function getBody(props) {
             {comments.map(id => <li key={id}><Comment id = {id}/></li>)}
         </ul>
     ) : <h3>No comments yet</h3>
-
+   
     return (
+        
         <div>
             {body}
-            <CommentForm />
+            <CommentForm articleId={articleId} />
         </div>
     )
 }
